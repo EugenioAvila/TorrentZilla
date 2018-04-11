@@ -8,9 +8,6 @@
         public int CategoriaPorDefecto { get; set; }
         public System.Net.Http.HttpClient Cliente { get; set; }
         public HtmlAgilityPack.HtmlDocument DocumentoHTML { get; set; }
-        public string NombreRepositorio { get { return "C:/Users/CASA/Desktop/torrentzilla/"; } }
-        public string Usuario { get; set; }
-        public string Clave { get; set; }
     }
 
     public class ListaTorrents

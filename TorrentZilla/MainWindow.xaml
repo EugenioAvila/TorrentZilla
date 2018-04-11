@@ -1,0 +1,94 @@
+﻿<Controls:MetroWindow x:Class="TorrentZilla.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+        WindowState="Maximized"
+        Title="Pagina Inicial  TorrentZilla" Height="350" Width="525" Icon="Images/favicon.ico">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="25*"></ColumnDefinition>
+            <ColumnDefinition Width="25*"></ColumnDefinition>
+            <ColumnDefinition Width="25*"></ColumnDefinition>
+            <ColumnDefinition Width="25*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30"></RowDefinition>
+            <RowDefinition Height="65"></RowDefinition>
+            <RowDefinition Height="1*"></RowDefinition>
+            <RowDefinition Height="99*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <DockPanel Grid.Column="0" Grid.Row="0">
+            <Menu DockPanel.Dock="Top">
+                <MenuItem Header="Archivo">
+                    <MenuItem Header="Cerrar" Click="MenuItem_Click" />
+                </MenuItem>
+            </Menu>
+        </DockPanel>
+        <GroupBox Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="4" Header="Filtros de busqueda">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition></RowDefinition>
+                </Grid.RowDefinitions>
+                <Label Grid.Column="0" Grid.Row="1" HorizontalAlignment="Center" Content="Buscar por"></Label>
+                <ComboBox x:Name="ComboBuscarPor" Grid.Row="1" SelectionChanged="ComboBuscarPor_SelectionChanged" Controls:TextBoxHelper.Watermark="Seleccione" Grid.Column="1">
+                    <ComboBoxItem Name="PorCategoria">Por Categoria</ComboBoxItem>
+                    <ComboBoxItem Name="PorFrase">Por Palabra Clave</ComboBoxItem>
+                </ComboBox>
+                <Label Grid.Column="2" Grid.Row="1" HorizontalAlignment="Center" Content="Categoria"></Label>
+                <ComboBox x:Name="ComboCategoria" Grid.Row="1" Controls:TextBoxHelper.Watermark="Seleccione" Grid.Column="3" />
+                <Label Grid.Column="4" Grid.Row="1" HorizontalAlignment="Center" Content="Palabras Clave"></Label>
+                <TextBox Grid.Column="5" Grid.Row="1"  Name="txtPalabrasClave"></TextBox>
+                <Label Grid.Column="6" Grid.Row="1" Content="Cantidad de paginas a considerar"></Label>
+                <TextBox Grid.Column="7" Grid.Row="1"  Name="txtCantidadPaginas" PreviewTextInput="NumberValidationTextBox"></TextBox>
+                <Button Grid.Column="8" Grid.Row="1" Content="Buscar" Style="{DynamicResource AccentedSquareButtonStyle}" HorizontalAlignment="Center" Width="130" Click="Button_Click"></Button>
+                <Button Grid.Column="9" Grid.Row="1" Content="Limpiar" Style="{DynamicResource AccentedSquareButtonStyle}" Name="btnLimpiar" Click="btnLimpiar_Click" HorizontalAlignment="Center" Width="130"></Button>
+            </Grid>
+        </GroupBox>
+        <Label Name="lblRef" Grid.Row="2" Grid.ColumnSpan="4" Height="1"></Label>
+        <GroupBox Grid.Column="0" Grid.Row="3" Header="Datos" Width="{Binding Path=ActualWidth, ElementName=lblRef}" Grid.ColumnSpan="4" Grid.RowSpan="3">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="10*"></RowDefinition>
+                    <RowDefinition Height="90*"></RowDefinition>
+                </Grid.RowDefinitions>
+                <Controls:MetroProgressBar Minimum="0" Maximum="100" Name="animBuscando" Value="100" IsIndeterminate="True" Grid.Column="0" Height="20" Grid.Row="0">
+                </Controls:MetroProgressBar>
+                <TextBlock HorizontalAlignment="Center" Name="txtBuscando" FontSize="15" Text="{Binding txtProgreso, UpdateSourceTrigger=PropertyChanged}"></TextBlock>
+                <DataGrid VerticalAlignment="Top" Grid.Column="0" Grid.Row="1" AutoGenerateColumns="False" Style="{StaticResource MetroDataGrid}" SelectionMode="Single" x:Name="GridResultados">
+                    <DataGrid.Columns>
+                        <DataGridCheckBoxColumn Header="Seleccionar" Binding="{Binding Seleccionado, UpdateSourceTrigger=PropertyChanged}" IsReadOnly="False"></DataGridCheckBoxColumn>
+                        <DataGridTextColumn Header="Nombre" MinWidth="100" Binding="{Binding NombreAmigable}" IsReadOnly="True" />
+                        <DataGridTextColumn Header="Enlace" MinWidth="100" Binding="{Binding Direccion}" IsReadOnly="True" />
+                    </DataGrid.Columns>
+                    <DataGrid.CommandBindings>
+                        <CommandBinding Command="{x:Static ApplicationCommands.Copy}" Executed="Copy"/>
+                    </DataGrid.CommandBindings>
+                    <DataGrid.ContextMenu>
+                        <ContextMenu>
+                            <MenuItem Command="{x:Static ApplicationCommands.Copy}" Header="Copiar enlace magnetico"/>
+                            <MenuItem Click="MenuItem_Click_1" Name="Iniciar" Header="Iniciar"/>
+                            <MenuItem Click="MenuItem_Click_1" Name="ExportarSeleccionado" Header="Exportar Seleccionado (s)"/>
+                            <!--<MenuItem Click="MenuItem_Click_1" Name="RespaldarSeleccionado" Header="Respaldar Seleccionado (s)"/>-->
+                        </ContextMenu>
+                    </DataGrid.ContextMenu>
+                </DataGrid>
+
+            </Grid>
+        </GroupBox>
+    </Grid>
+</Controls:MetroWindow>

@@ -1,26 +1,12 @@
-# README #
-
-This README would normally document whatever steps are necessary to get your application up and running.
-
+# TorrentZilla #
+Olvídate de perder tiempo viendo publicidad, enfócate en los resultados, busca tus enlaces magnéticos por palabra clave o por categoría, ingresa la cantidad de páginas a considerar (alrededor de 30 resultados por página). Selecciona y guarda o descarga tus archivos.
 ### What is this repository for? ###
 
-* Quick summary
-* Version
-* [Learn Markdown](https://bitbucket.org/tutorials/markdowndemo)
+* Busca en la página the pirate bay (https://thepiratebay.org/), obtén los enlaces magnéticos.
+* En esta primera versión, busca por categoría o por palabra clave.
 
 ### How do I get set up? ###
 
-* Summary of set up
-* Configuration
-* Dependencies
-* Database configuration
-* How to run tests
-* Deployment instructions
-
-### Contribution guidelines ###
-
-* Writing tests
-* Code review
-* Other guidelines
-
-### Who do I talk to? ###
+* Descarga el código fuente.
+* Gestiona la solución, compílala y ejecútala o solo ejecútala.
+* Busca tus enlaces.

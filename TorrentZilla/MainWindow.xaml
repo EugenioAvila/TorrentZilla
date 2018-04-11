@@ -80,7 +80,7 @@
                     </DataGrid.CommandBindings>
                     <DataGrid.ContextMenu>
                         <ContextMenu>
-                            <MenuItem Command="{x:Static ApplicationCommands.Copy}" Header="Copiar enlace magnetico"/>
+                            <MenuItem Command="{x:Static ApplicationCommands.Copy}" Header="Copiar enlace magnetico a portapapeles"/>
                             <MenuItem Click="MenuItem_Click_1" Name="Iniciar" Header="Iniciar"/>
                             <MenuItem Click="MenuItem_Click_1" Name="ExportarSeleccionado" Header="Exportar Seleccionado (s)"/>
                         </ContextMenu>

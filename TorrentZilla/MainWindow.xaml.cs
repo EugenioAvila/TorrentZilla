@@ -5,9 +5,6 @@ namespace TorrentZilla
     {
         short _modo = (short)Herramientas.Enumeradores.eModosBusqueda.SIN_DEFINIR;
         System.Collections.Generic.List<Herramientas.ListaTorrents> _lista = new System.Collections.Generic.List<Herramientas.ListaTorrents>();
-        string _usuario = string.Empty;
-        string _clave = string.Empty;
-        string txtProgreso = string.Empty;
         public MainWindow()
         {
             try

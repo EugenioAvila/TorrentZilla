@@ -253,18 +253,7 @@ namespace TorrentZilla
                 System.Windows.MessageBox.Show(exc.Message);
             }
         }
-
-        private static void RespaldaEnlaces(System.Collections.Generic.List<Herramientas.ListaTorrents> _enlaces)
-        {
-            try
-            {
-            }
-            catch (System.Exception exc)
-            {
-                System.Windows.MessageBox.Show(exc.Message);
-            }
-        }
-
+        
         private void btnLimpiar_Click(object sender, System.Windows.RoutedEventArgs e)
         {
             txtCantidadPaginas.Text = string.Empty;

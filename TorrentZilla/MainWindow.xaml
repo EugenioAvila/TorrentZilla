@@ -12,19 +12,10 @@
             <ColumnDefinition Width="25*"></ColumnDefinition>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="30"></RowDefinition>
             <RowDefinition Height="65"></RowDefinition>
-            <RowDefinition Height="1*"></RowDefinition>
             <RowDefinition Height="99*"></RowDefinition>
         </Grid.RowDefinitions>
-        <DockPanel Grid.Column="0" Grid.Row="0">
-            <Menu DockPanel.Dock="Top">
-                <MenuItem Header="Archivo">
-                    <MenuItem Header="Cerrar" Click="MenuItem_Click" />
-                </MenuItem>
-            </Menu>
-        </DockPanel>
-        <GroupBox Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="4" Header="Filtros de busqueda">
+        <GroupBox Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="4" Header="Filtros de busqueda">
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition></ColumnDefinition>
@@ -56,8 +47,7 @@
                 <Button Grid.Column="9" Grid.Row="1" Content="Limpiar" Background="LightBlue" Name="btnLimpiar" Click="btnLimpiar_Click" HorizontalAlignment="Center" Width="130"></Button>
             </Grid>
         </GroupBox>
-        <Label Name="lblRef" Grid.Row="2" Grid.ColumnSpan="4" Height="1"></Label>
-        <GroupBox Grid.Column="0" Grid.Row="3" Header="Datos" Width="{Binding Path=ActualWidth, ElementName=lblRef}" Grid.ColumnSpan="4" Grid.RowSpan="3">
+        <GroupBox Grid.Column="0" Grid.Row="1" Header="Datos" Width="{Binding Path=ActualWidth, ElementName=lblRef}" Grid.ColumnSpan="4" Grid.RowSpan="3">
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition></ColumnDefinition>

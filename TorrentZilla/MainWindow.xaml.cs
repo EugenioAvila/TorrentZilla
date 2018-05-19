@@ -189,22 +189,6 @@ namespace TorrentZilla
             }
         }
 
-        private void MenuItem_Click(object sender, System.Windows.RoutedEventArgs e)
-        {
-            var _elegido = (System.Windows.Controls.MenuItem)sender;
-            if (_elegido != null)
-                switch (_elegido.Header)
-                {
-                    case "Cerrar":
-                        System.Windows.MessageBoxResult messageBoxResult = System.Windows.MessageBox.Show("Desea Salir?", "Confirmación", System.Windows.MessageBoxButton.YesNo);
-                        if (messageBoxResult == System.Windows.MessageBoxResult.Yes)
-                            System.Windows.Application.Current.Shutdown();
-                        break;
-                    default:
-                        break;
-                }
-        }
-
         private void MenuItem_Click_1(object sender, System.Windows.RoutedEventArgs e)
         {
             try

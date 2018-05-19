@@ -115,12 +115,13 @@ namespace TorrentZilla
                                 {
                                     var _elementos = att.Value.Split('&');
                                     string encodedString = System.Web.HttpUtility.HtmlEncode(_elementos.FirstOrDefault(x => x.StartsWith("dn="))).Replace('+', ' ').Remove(0, 3);
+                                    string _nombreL = System.Text.RegularExpressions.Regex.Replace(encodedString, @"([^a-zA-Z0-9_]|^\s)", " "); 
                                     _lista.Add(new Herramientas.ListaTorrents()
                                     {
                                         Categoria = System.Convert.ToInt32(Herramientas.Enumeradores.eDatosPorDefault.CATEGORIA_POR_DEFECTO),
                                         Direccion = att.Value,
                                         Fecha = _fecha,
-                                        NombreAmigable = encodedString,
+                                        NombreAmigable = _nombreL,
                                         Seleccionado = false
                                     });
                                 }
@@ -130,7 +131,7 @@ namespace TorrentZilla
                 animBuscando.Visibility = System.Windows.Visibility.Collapsed;
                 txtBuscando.FontWeight = System.Windows.FontWeights.Bold;
                 txtBuscando.Text = "TERMINADO, SE HAN HALLADO " + _lista.Count + " ELEMENTOS";
-                GridResultados.ItemsSource = _lista;
+                GridResultados.ItemsSource = _lista != null ? _lista.Any() ? _lista.Where(x => x.NombreAmigable != "") : new System.Collections.Generic.List<Herramientas.ListaTorrents>() : new System.Collections.Generic.List<Herramientas.ListaTorrents>();
             }
             catch (System.Exception exc)
             {

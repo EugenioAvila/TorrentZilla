@@ -3,7 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
         WindowState="Maximized"
-        Title="Pagina Inicial TorrentZilla" Icon="Images/favicon.ico">
+        Title="Página Inicial TorrentZilla" Icon="Images/favicon.ico">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="25*"></ColumnDefinition>
@@ -15,7 +15,7 @@
             <RowDefinition Height="65"></RowDefinition>
             <RowDefinition Height="99*"></RowDefinition>
         </Grid.RowDefinitions>
-        <GroupBox Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="4" Header="Filtros de busqueda">
+        <GroupBox Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="4" Header="Filtros de búsqueda">
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition></ColumnDefinition>

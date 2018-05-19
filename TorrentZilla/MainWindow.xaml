@@ -6,16 +6,13 @@
         Title="Página Inicial TorrentZilla" Icon="Images/favicon.ico">
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="25*"></ColumnDefinition>
-            <ColumnDefinition Width="25*"></ColumnDefinition>
-            <ColumnDefinition Width="25*"></ColumnDefinition>
-            <ColumnDefinition Width="25*"></ColumnDefinition>
+            <ColumnDefinition Width="100*"></ColumnDefinition>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="65"></RowDefinition>
             <RowDefinition Height="99*"></RowDefinition>
         </Grid.RowDefinitions>
-        <GroupBox Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="4" Header="Filtros de búsqueda">
+        <GroupBox Grid.Column="0" Grid.Row="0" Header="Filtros de búsqueda">
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition></ColumnDefinition>

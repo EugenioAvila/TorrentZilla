@@ -202,6 +202,12 @@ namespace TorrentZilla
                         System.Diagnostics.Process.Start(_direccion);
                         break;
                     case "ExportarSeleccionado":
+                        if (GridResultados.Items.Count == 0)
+                        {
+                            System.Windows.MessageBox.Show("Seleccione al menos un enlace para exportar");
+                            return;
+                        }
+
                         using (System.IO.StreamWriter outputFile = new System.IO.StreamWriter(System.Environment.GetFolderPath(System.Environment.SpecialFolder.Desktop) + @"\EnlacesTorrentZilla.txt"))
                         {
                             foreach (var item in GridResultados.Items)

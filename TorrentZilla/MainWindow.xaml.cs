@@ -70,13 +70,11 @@ namespace TorrentZilla
                 if (_modo == (short)Herramientas.Enumeradores.eModosBusqueda.SIN_DEFINIR)
                 {
                     animBuscando.Visibility = System.Windows.Visibility.Collapsed;
-                    txtBuscando.FontWeight = System.Windows.FontWeights.Bold;
                     txtBuscando.Text = "SELECCIONE EL MODO DE BUSQUEDA";
                     return;
                 }
 
                 animBuscando.Visibility = System.Windows.Visibility.Visible;
-                txtBuscando.FontWeight = System.Windows.FontWeights.Bold;
                 txtBuscando.Text = "BUSCANDO";
                 var _categoriaElegida = (Herramientas.Categorias)ComboCategoria.SelectedItem;
                 Herramientas.VariablesGlobales variablesGlobales = new Herramientas.VariablesGlobales()
@@ -129,7 +127,6 @@ namespace TorrentZilla
                     }
 
                 animBuscando.Visibility = System.Windows.Visibility.Collapsed;
-                txtBuscando.FontWeight = System.Windows.FontWeights.Bold;
                 txtBuscando.Text = "TERMINADO, SE HAN HALLADO " + _lista.Count + " ELEMENTOS";
                 GridResultados.ItemsSource = _lista != null ? _lista.Any() ? _lista.Where(x => x.NombreAmigable != "") : new System.Collections.Generic.List<Herramientas.ListaTorrents>() : new System.Collections.Generic.List<Herramientas.ListaTorrents>();
             }
@@ -137,7 +134,6 @@ namespace TorrentZilla
             {
                 animBuscando.Visibility = System.Windows.Visibility.Collapsed;
                 txtBuscando.Text = "SURGIO UNA EXCEPCION: " + exc.Message;
-                txtBuscando.FontWeight = System.Windows.FontWeights.Bold;
             }
         }
 

@@ -58,7 +58,7 @@
                 </Grid.RowDefinitions>
                 <Controls:MetroProgressBar Minimum="0" Maximum="100" Name="animBuscando" Value="100" IsIndeterminate="True" Grid.Column="0" Height="20" Grid.Row="0">
                 </Controls:MetroProgressBar>
-                <TextBlock HorizontalAlignment="Center" Name="txtBuscando" FontSize="15" Text="{Binding txtProgreso, UpdateSourceTrigger=PropertyChanged}"></TextBlock>
+                <TextBlock HorizontalAlignment="Center" Name="txtBuscando" FontWeight="Bold"  FontSize="15" Text="{Binding txtProgreso, UpdateSourceTrigger=PropertyChanged}"></TextBlock>
                 <DataGrid VerticalAlignment="Top" Grid.Column="0" Grid.Row="1" AutoGenerateColumns="False" Style="{StaticResource MetroDataGrid}" SelectionMode="Single" x:Name="GridResultados">
                     <DataGrid.Columns>
                         <DataGridCheckBoxColumn Header="Seleccionar" Binding="{Binding Seleccionado, UpdateSourceTrigger=PropertyChanged}" IsReadOnly="False"></DataGridCheckBoxColumn>

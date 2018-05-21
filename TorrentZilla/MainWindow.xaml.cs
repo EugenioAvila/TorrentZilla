@@ -128,7 +128,7 @@ namespace TorrentZilla
 
                 animBuscando.Visibility = System.Windows.Visibility.Collapsed;
                 txtBuscando.Text = "TERMINADO, SE HAN HALLADO " + _lista.Count + " ELEMENTOS";
-                GridResultados.ItemsSource = _lista != null ? _lista.Any() ? _lista.Where(x => x.NombreAmigable != "") : new System.Collections.Generic.List<Herramientas.ListaTorrents>() : new System.Collections.Generic.List<Herramientas.ListaTorrents>();
+                GridResultados.ItemsSource = _lista != null ? _lista.Any() ? _lista.Where(x => x.NombreAmigable != "").OrderBy(y => y.NombreAmigable).ToList() : new System.Collections.Generic.List<Herramientas.ListaTorrents>() : new System.Collections.Generic.List<Herramientas.ListaTorrents>();
             }
             catch (System.Exception exc)
             {
@@ -229,7 +229,7 @@ namespace TorrentZilla
                             Seleccionado = false
                         }));
 
-                        GridResultados.ItemsSource = _filtros;
+                        GridResultados.ItemsSource = _filtros.OrderBy(x => x.NombreAmigable).ToList();
                         break;
                     default:
                         break;

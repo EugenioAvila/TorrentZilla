@@ -44,7 +44,7 @@
                 <Button Grid.Column="9" Grid.Row="1" Content="Limpiar" Background="LightBlue" Name="btnLimpiar" Click="btnLimpiar_Click" HorizontalAlignment="Center" Width="130"></Button>
             </Grid>
         </GroupBox>
-        <GroupBox Grid.Column="0" Grid.Row="1" Header="Datos" Width="{Binding Path=ActualWidth, ElementName=lblRef}" Grid.ColumnSpan="4" Grid.RowSpan="3">
+        <GroupBox Grid.Column="0" Grid.Row="1" Header="Datos" Grid.ColumnSpan="4" Grid.RowSpan="3">
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition></ColumnDefinition>

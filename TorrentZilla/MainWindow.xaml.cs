@@ -148,11 +148,13 @@ namespace TorrentZilla
                         case "Por Categoria":
                             ComboCategoria.IsEnabled = true;
                             txtPalabrasClave.IsEnabled = false;
+                            txtCantidadPaginas.IsEnabled = true;
                             _modo = (short)Herramientas.Enumeradores.eModosBusqueda.POR_CATEGORIA;
                             break;
                         case "Por Palabra Clave":
                             txtPalabrasClave.IsEnabled = true;
                             ComboCategoria.IsEnabled = false;
+                            txtCantidadPaginas.IsEnabled = false;
                             _modo = (short)Herramientas.Enumeradores.eModosBusqueda.POR_PALABRA_CLAVE;
                             break;
                     }

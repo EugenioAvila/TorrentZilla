@@ -3,7 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
         WindowState="Maximized"
-        Title="Página Inicial TorrentZilla" Icon="Images/favicon.ico">
+        Title="Página Inicial TorrentZilla" Icon="Images/skull.ico">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="100*"></ColumnDefinition>

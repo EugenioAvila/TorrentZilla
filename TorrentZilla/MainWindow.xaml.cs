@@ -19,7 +19,7 @@ namespace TorrentZilla
                 System.Windows.MessageBox.Show(exc.Message);
             }
         }
-        
+
         public void InicializaControles()
         {
             try
@@ -74,6 +74,7 @@ namespace TorrentZilla
                     return;
                 }
 
+                GridResultados.ItemsSource = new System.Collections.Generic.List<Herramientas.ListaTorrents>();
                 animBuscando.Visibility = System.Windows.Visibility.Visible;
                 txtBuscando.Text = "BUSCANDO";
                 var _categoriaElegida = (Herramientas.Categorias)ComboCategoria.SelectedItem;
@@ -92,7 +93,7 @@ namespace TorrentZilla
                     for (int i = 0; i < variablesGlobales.CantidadPaginas; i++)
                     {
                         if (_modo == (short)Herramientas.Enumeradores.eModosBusqueda.POR_CATEGORIA)
-                            _url = variablesGlobales.Url + "/" + System.Convert.ToInt32(_categoriaElegida.Id) + "/" + i;
+                            _url = variablesGlobales.Url + System.Convert.ToInt32(_categoriaElegida.Id) + "/" + i + "/3";
                         if (_modo == (short)Herramientas.Enumeradores.eModosBusqueda.POR_PALABRA_CLAVE)
                             _url = "https://thepiratebay.org/search/" + _claves + "/0/99/0";
 
@@ -105,6 +106,7 @@ namespace TorrentZilla
                         source = System.Net.WebUtility.HtmlDecode(source);
                         variablesGlobales.DocumentoHTML = new HtmlAgilityPack.HtmlDocument();
                         variablesGlobales.DocumentoHTML.LoadHtml(source);
+                        txtBuscando.Text = "DECODIFICANDO";
                         foreach (HtmlAgilityPack.HtmlNode link in variablesGlobales.DocumentoHTML.DocumentNode.SelectNodes("//a[@href]"))
                         {
                             HtmlAgilityPack.HtmlAttribute att = link.Attributes["href"];
@@ -113,7 +115,7 @@ namespace TorrentZilla
                                 {
                                     var _elementos = att.Value.Split('&');
                                     string encodedString = System.Web.HttpUtility.HtmlEncode(_elementos.FirstOrDefault(x => x.StartsWith("dn="))).Replace('+', ' ').Remove(0, 3);
-                                    string _nombreL = System.Text.RegularExpressions.Regex.Replace(encodedString, @"([^a-zA-Z0-9_]|^\s)", " "); 
+                                    string _nombreL = System.Text.RegularExpressions.Regex.Replace(encodedString, @"([^a-zA-Z0-9_]|^\s)", " ");
                                     _lista.Add(new Herramientas.ListaTorrents()
                                     {
                                         Categoria = System.Convert.ToInt32(Herramientas.Enumeradores.eDatosPorDefault.CATEGORIA_POR_DEFECTO),
@@ -242,11 +244,13 @@ namespace TorrentZilla
                 System.Windows.MessageBox.Show(exc.Message);
             }
         }
-        
+
         private void btnLimpiar_Click(object sender, System.Windows.RoutedEventArgs e)
         {
+            txtBuscando.Text = string.Empty;
             txtCantidadPaginas.Text = string.Empty;
             txtPalabrasClave.Text = string.Empty;
+            GridResultados.ItemsSource = new System.Collections.Generic.List<Herramientas.ListaTorrents>();
         }
     }
 }

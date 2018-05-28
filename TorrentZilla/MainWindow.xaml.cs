@@ -49,8 +49,7 @@ namespace TorrentZilla
 
         private void NumberValidationTextBox(object sender, System.Windows.Input.TextCompositionEventArgs e)
         {
-            System.Text.RegularExpressions.Regex regex = new System.Text.RegularExpressions.Regex("[^0-9]+");
-            e.Handled = regex.IsMatch(e.Text);
+            e.Handled = new System.Text.RegularExpressions.Regex("[^0-9]+").IsMatch(e.Text);
         }
 
         public static System.Collections.Generic.List<System.Collections.Generic.KeyValuePair<string, int>> GetEnumList<T>()
@@ -194,13 +193,11 @@ namespace TorrentZilla
         {
             try
             {
-                var aa = (System.Windows.Controls.MenuItem)sender;
                 string _direccion = string.Empty;
-                var _selected = (Herramientas.ListaTorrents)GridResultados.SelectedItem;
-                if (_selected != null)
-                    _direccion = _selected.Direccion;
+                if ((Herramientas.ListaTorrents)GridResultados.SelectedItem != null)
+                    _direccion = ((Herramientas.ListaTorrents)GridResultados.SelectedItem).Direccion;
 
-                switch (aa.Name)
+                switch (((System.Windows.Controls.MenuItem)sender).Name)
                 {
                     case "Iniciar":
                         System.Diagnostics.Process.Start(_direccion);

@@ -19,7 +19,7 @@ namespace TorrentZilla
                 System.Windows.MessageBox.Show(exc.Message);
             }
         }
-
+        
         public void InicializaControles()
         {
             try
@@ -49,7 +49,8 @@ namespace TorrentZilla
 
         private void NumberValidationTextBox(object sender, System.Windows.Input.TextCompositionEventArgs e)
         {
-            e.Handled = new System.Text.RegularExpressions.Regex("[^0-9]+").IsMatch(e.Text);
+            System.Text.RegularExpressions.Regex regex = new System.Text.RegularExpressions.Regex("[^0-9]+");
+            e.Handled = regex.IsMatch(e.Text);
         }
 
         public static System.Collections.Generic.List<System.Collections.Generic.KeyValuePair<string, int>> GetEnumList<T>()
@@ -106,10 +107,15 @@ namespace TorrentZilla
                         variablesGlobales.DocumentoHTML = new HtmlAgilityPack.HtmlDocument();
                         variablesGlobales.DocumentoHTML.LoadHtml(source);
                         txtBuscando.Text = "DECODIFICANDO";
+                        string _urlBase = string.Empty;
                         foreach (HtmlAgilityPack.HtmlNode link in variablesGlobales.DocumentoHTML.DocumentNode.SelectNodes("//a[@href]"))
                         {
                             HtmlAgilityPack.HtmlAttribute att = link.Attributes["href"];
                             if (!string.IsNullOrEmpty(att.Value))
+                            {
+                                if (att.Value.StartsWith("/torrent/"))
+                                    _urlBase = "https://thepiratebay.org" + att.Value.Trim();
+
                                 if (att.Value.StartsWith("magnet:?"))
                                 {
                                     var _elementos = att.Value.Split('&');
@@ -121,9 +127,11 @@ namespace TorrentZilla
                                         Direccion = att.Value,
                                         Fecha = _fecha,
                                         NombreAmigable = _nombreL,
-                                        Seleccionado = false
+                                        Seleccionado = false,
+                                        Origen = _urlBase
                                     });
                                 }
+                            }
                         }
                     }
 
@@ -193,11 +201,13 @@ namespace TorrentZilla
         {
             try
             {
+                var aa = (System.Windows.Controls.MenuItem)sender;
                 string _direccion = string.Empty;
-                if ((Herramientas.ListaTorrents)GridResultados.SelectedItem != null)
-                    _direccion = ((Herramientas.ListaTorrents)GridResultados.SelectedItem).Direccion;
+                var _selected = (Herramientas.ListaTorrents)GridResultados.SelectedItem;
+                if (_selected != null)
+                    _direccion = _selected.Direccion;
 
-                switch (((System.Windows.Controls.MenuItem)sender).Name)
+                switch (aa.Name)
                 {
                     case "Iniciar":
                         System.Diagnostics.Process.Start(_direccion);
@@ -232,6 +242,10 @@ namespace TorrentZilla
 
                         GridResultados.ItemsSource = _filtros.OrderBy(x => x.NombreAmigable).ToList();
                         break;
+                    case "DetallesSeleccionado":
+                        VentanaDetalles _detalles = new VentanaDetalles(_selected.Origen);
+                        _detalles.Show();
+                        break;
                     default:
                         break;
                 }
@@ -241,7 +255,7 @@ namespace TorrentZilla
                 System.Windows.MessageBox.Show(exc.Message);
             }
         }
-
+        
         private void btnLimpiar_Click(object sender, System.Windows.RoutedEventArgs e)
         {
             txtBuscando.Text = string.Empty;

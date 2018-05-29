@@ -3,7 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
         WindowState="Maximized"
-        Title="Página Inicial TorrentZilla" Icon="Images/skull.ico">
+        Title="Página Inicial TorrentZilla" Icon="Images/skull.png">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="100*"></ColumnDefinition>
@@ -70,6 +70,7 @@
                             <MenuItem Command="{x:Static ApplicationCommands.Copy}" Header="Copiar enlace magnetico a portapapeles"/>
                             <MenuItem Click="MenuItem_Click_1" Name="Iniciar" Header="Iniciar"/>
                             <MenuItem Click="MenuItem_Click_1" Name="ExportarSeleccionado" Header="Exportar Seleccionado (s)"/>
+                            <MenuItem Click="MenuItem_Click_1" Name="DetallesSeleccionado" Header="Detalles"/>
                         </ContextMenu>
                     </DataGrid.ContextMenu>
                 </DataGrid>

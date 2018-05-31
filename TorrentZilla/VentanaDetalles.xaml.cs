@@ -41,6 +41,16 @@ namespace TorrentZilla
                         var _texto = _titulo.ChildNodes.FirstOrDefault(x => x.Name == "#text");
                         lblNombreElemento.Content = _texto != null ? System.Text.RegularExpressions.Regex.Replace(_texto.InnerText, @"([^a-zA-Z0-9_]|^\s)", " ") : string.Empty;
                     }
+
+                var _detalles = _doc.GetElementbyId("details");
+                if (_detalles != null)
+                    if (_detalles.ChildNodes.Count > 0)
+                    {
+                        var aa = from x in _detalles.ChildNodes
+                                     from y in x.Attributes
+                                         where y.Name == "col1"
+                                            select x;
+                    }
                 #endregion  
             }
             catch (System.Exception exc)
